@@ -110,3 +110,6 @@ Key objectives include:
 ## Author
 
 Developed as part of an enterprise Odoo solution focused on inventory visibility, ERP integration and backend architecture.
+
+<img width="1590" height="721" alt="image" src="https://github.com/user-attachments/assets/36f89367-d72e-495f-afb0-79f3f28f753e" />
+
