@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="custom_login_layout" inherit_id="web.login_layout" name="Custom Login Layout">
+        <!-- Remplacement du bloc footer pour masquer "Manage Databases" et "Powered by Odoo" -->
+        <xpath expr="//div[@t-if='not disable_footer']" position="replace">
+            <!-- Vide pour masquer complètement -->
+        </xpath>
+    </template>
+
+    <template id="custom_login_hide_superuser" inherit_id="web.login" name="Custom Login Hide Superuser">
+        <!-- Remplacement et suppression définitive du bouton 'Log in as superuser' par selection sur l'attribut name -->
+        <xpath expr="//button[@name='redirect']" position="replace">
+            <!-- Vide pour masquer définitivement -->
+        </xpath>
+    </template>
+</odoo>

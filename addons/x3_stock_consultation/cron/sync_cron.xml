@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="cron_sync_x3_stock" model="ir.cron">
+        <field name="name">Synchronisation X3 - Stocks et Prix (18h30)</field>
+        <field name="model_id" ref="model_x3_sync_service"/>
+        <field name="state">code</field>
+        <field name="code">model.run_full_sync()</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">24</field>
+        <field name="interval_type">hours</field>
+        <field name="numbercall">-1</field>
+        <field name="nextcall" eval="(datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d 18:30:00')"/>
+        <field name="doall">False</field>
+        <field name="active">True</field>
+    </record>
+
+    <!-- Deuxième passage à 20h00 si la première a échoué -->
+    <record id="cron_sync_x3_stock_retry" model="ir.cron">
+        <field name="name">Synchronisation X3 - Rattrapage (20h00)</field>
+        <field name="model_id" ref="model_x3_sync_service"/>
+        <field name="state">code</field>
+        <field name="code">model.run_full_sync()</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">24</field>
+        <field name="interval_type">hours</field>
+        <field name="numbercall">-1</field>
+        <field name="nextcall" eval="(datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d 20:00:00')"/>
+        <field name="doall">False</field>
+        <field name="active">True</field>
+    </record>
+
+    <!-- Nettoyage historique tous les jours à 02h00 -->
+    <record id="cron_cleanup_x3_history" model="ir.cron">
+        <field name="name">Nettoyage historique X3</field>
+        <field name="model_id" ref="model_x3_sync_service"/>
+        <field name="state">code</field>
+        <field name="code">model.cleanup_history()</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">24</field>
+        <field name="interval_type">hours</field>
+        <field name="numbercall">-1</field>
+        <field name="nextcall" eval="(datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d 02:00:00')"/>
+        <field name="doall">False</field>
+        <field name="active">True</field>
+    </record>
+
+    <!-- Cron rapide : exécute les synchronisations manuelles demandées -->
+    <record id="cron_sync_pending_x3" model="ir.cron">
+        <field name="name">X3 - Traitement des syncs manuelles</field>
+        <field name="model_id" ref="model_x3_sync_service"/>
+        <field name="state">code</field>
+        <field name="code">model.run_pending_sync()</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">5</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="nextcall">2026-01-01 00:00:00</field>
+        <field name="doall">False</field>
+        <field name="active">True</field>
+    </record>
+</odoo>

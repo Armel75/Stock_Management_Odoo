@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- La VUE doit être déclarée AVANT l'action qui la référence -->
+    <record id="view_x3_manual_sync_form" model="ir.ui.view">
+        <field name="name">x3.manual.sync.wizard.form</field>
+        <field name="model">x3.manual.sync.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Synchronisation manuelle">
+                <p class="mt-4 mb-4">
+                    Voulez-vous lancer une synchronisation complète des stocks et prix
+                    depuis SAGE X3 maintenant ?
+                </p>
+                <p>
+                    Cette opération peut prendre plusieurs minutes selon le volume de données.
+                </p>
+                <footer>
+                    <button name="action_launch_sync"
+                            string="Synchroniser maintenant"
+                            type="object"
+                            class="btn-primary"/>
+                    <button string="Annuler"
+                            class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action lancée par le menu -->
+    <record id="action_x3_manual_sync" model="ir.actions.act_window">
+        <field name="name">Synchroniser maintenant</field>
+        <field name="res_model">x3.manual.sync.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="view_x3_manual_sync_form"/>
+    </record>
+</odoo>

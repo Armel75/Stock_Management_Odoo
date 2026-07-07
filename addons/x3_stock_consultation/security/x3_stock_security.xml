@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Catégorie de groupes -->
+    <record id="module_category_x3_stock" model="ir.module.category">
+        <field name="name">SAGE X3 - Stocks &amp; Prix</field>
+        <field name="description">Consultation des stocks et prix SAGE X3</field>
+        <field name="sequence">20</field>
+    </record>
+
+    <!-- Groupe : Utilisateur consultation -->
+    <record id="group_x3_stock_user" model="res.groups">
+        <field name="name">Consultation stocks X3</field>
+        <field name="category_id" ref="module_category_x3_stock"/>
+        <field name="comment">Accès en lecture seule aux stocks et prix synchronisés</field>
+    </record>
+
+    <!-- Groupe : Administrateur technique -->
+    <record id="group_x3_stock_admin" model="res.groups">
+        <field name="name">Administration X3</field>
+        <field name="category_id" ref="module_category_x3_stock"/>
+        <field name="comment">Configuration, synchronisation et monitoring</field>
+        <field name="implied_ids" eval="[(4, ref('group_x3_stock_user'))]"/>
+    </record>
+</odoo>

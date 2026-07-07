@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ======================== FORMULAIRE DE CONFIGURATION ======================== -->
+    <record id="view_x3_sync_configuration_form" model="ir.ui.view">
+        <field name="name">x3.sync.configuration.form</field>
+        <field name="model">x3.sync.configuration</field>
+        <field name="arch" type="xml">
+            <form string="Configuration X3">
+                <header>
+                    <button name="action_test_connection"
+                            string="Tester la connexion"
+                            type="object"
+                            class="btn-secondary"/>
+                    <button name="%(action_x3_manual_sync)d"
+                            string="Synchroniser maintenant"
+                            type="action"
+                            class="btn-primary"/>
+                    <button name="action_save_configuration"
+                            string="Sauvegarder"
+                            type="object"
+                            class="btn-secondary"/>
+                </header>
+                <sheet>
+                    <group string="État de la synchronisation">
+                        <field name="last_sync_date" string="Dernière synchro"/>
+                        <field name="last_sync_state" string="Statut"/>
+                        <field name="last_sync_duration" string="Durée (s)"/>
+                    </group>
+                    <notebook>
+                        <page string="Connexion SQL Server">
+                            <group>
+                                <field name="sql_server_host" string="Hôte"/>
+                                <field name="sql_server_port" string="Port"/>
+                                <field name="sql_server_user" string="Utilisateur"/>
+                                <field name="sql_server_password" string="Mot de passe" password="True"/>
+                                <field name="sql_server_database" string="Base de données"/>
+                                <field name="sql_server_schema" string="Schéma"/>
+                            </group>
+                        </page>
+                        <page string="Vues SQL">
+                            <group string="Stock">
+                                <field name="view_stock_name" string="Vue stocks"/>
+                            </group>
+                            <group string="Prix par région (vues fixes)">
+                                <field name="view_stock_name" invisible="1"/>
+                                <p class="text-muted mt-2">
+                                    Vues prix par région (configurées en dur dans le code) :<br/>
+                                    ZPRIXBDA · ZPRIXBER · ZPRIXCEN · ZPRIXKRI · ZPRIXLTT · ZPRIXNGA · ZPRIXOU
+                                </p>
+                            </group>
+                        </page>
+                        <page string="Paramètres">
+                            <group>
+                                <field name="sync_interval_hours" string="Intervalle synchro (h)"/>
+                                <field name="history_retention_days" string="Rétention historique (jours)"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ======================== ACTION ======================== -->
+    <record id="action_x3_sync_configuration" model="ir.actions.act_window">
+        <field name="name">Configuration X3</field>
+        <field name="res_model">x3.sync.configuration</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_x3_sync_configuration_form"/>
+        <field name="target">inline</field>
+        <field name="help" type="html">
+            <p>
+                Configurez ici les paramètres de connexion au serveur SQL Server SAGE X3
+                ainsi que les paramètres de synchronisation.
+            </p>
+        </field>
+    </record>
+</odoo>

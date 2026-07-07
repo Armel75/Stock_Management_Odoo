@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- Paramètres par défaut pour la connexion SQL Server -->
+    <record id="x3_sql_server_host" model="ir.config_parameter">
+        <field name="key">x3_stock.sql_server_host</field>
+        <field name="value">192.168.0.99\SQLX3V11</field>
+    </record>
+    <record id="x3_sql_server_port" model="ir.config_parameter">
+        <field name="key">x3_stock.sql_server_port</field>
+        <field name="value">1433</field>
+    </record>
+    <record id="x3_sql_server_user" model="ir.config_parameter">
+        <field name="key">x3_stock.sql_server_user</field>
+        <field name="value">sa</field>
+    </record>
+    <record id="x3_sql_server_password" model="ir.config_parameter">
+        <field name="key">x3_stock.sql_server_password</field>
+        <field name="value">P@ssw0rd01</field>
+    </record>
+    <record id="x3_sql_server_database" model="ir.config_parameter">
+        <field name="key">x3_stock.sql_server_database</field>
+        <field name="value">sagex3v11</field>
+    </record>
+    <record id="x3_sync_interval" model="ir.config_parameter">
+        <field name="key">x3_stock.sync_interval_hours</field>
+        <field name="value">24</field>
+    </record>
+    <record id="x3_history_retention_days" model="ir.config_parameter">
+        <field name="key">x3_stock.history_retention_days</field>
+        <field name="value">30</field>
+    </record>
+    <record id="x3_sql_server_schema" model="ir.config_parameter">
+        <field name="key">x3_stock.sql_server_schema</field>
+        <field name="value">SOREPCO</field>
+    </record>
+    <record id="x3_view_stock" model="ir.config_parameter">
+        <field name="key">x3_stock.view_stock</field>
+        <field name="value">ZSTOAG</field>
+    </record>
+</odoo>

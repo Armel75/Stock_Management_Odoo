@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ======================== LISTE ======================== -->
+    <record id="view_x3_tariff_littoral_tree" model="ir.ui.view">
+        <field name="name">x3.tariff.littoral.tree</field>
+        <field name="model">x3.tariff.littoral</field>
+        <field name="arch" type="xml">
+            <tree string="Tarifaire du Littoral" limit="80" multi_edit="0" create="false" delete="false">
+                <field name="default_code" string="CODE X3"/>
+                <field name="name" string="DÉSIGNATION"/>
+                <field name="plicri3" string="FAMILLE STAT"/>
+                <field name="price_ht" string="PRIX HT" widget="monetary"
+                       optional="show" sum="Total"/>
+                <field name="price_ttc" string="PRIX TTC" widget="monetary"
+                       optional="show" sum="Total"/>
+                <field name="min_qty" string="QTE MIN" optional="show"/>
+                <field name="max_qty" string="QTE MAX" optional="show"/>
+                <field name="text" string="Texte" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ======================== FORMULAIRE ======================== -->
+    <record id="view_x3_tariff_littoral_form" model="ir.ui.view">
+        <field name="name">x3.tariff.littoral.form</field>
+        <field name="model">x3.tariff.littoral</field>
+        <field name="arch" type="xml">
+            <form string="Fiche tarifaire Littoral" create="false" edit="false" delete="false">
+                <header/>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="default_code" placeholder="CODE X3"/>
+                        </h1>
+                        <h2>
+                            <field name="name" placeholder="Désignation"/>
+                        </h2>
+                    </div>
+                    <group>
+                        <group string="Article">
+                            <field name="default_code"/>
+                            <field name="name"/>
+                            <field name="plicri3"/>
+                        </group>
+                        <group string="Prix">
+                            <field name="price_ht" widget="monetary"/>
+                            <field name="price_ttc" widget="monetary"/>
+                        </group>
+                        <group string="Quantités">
+                            <field name="min_qty"/>
+                            <field name="max_qty"/>
+                        </group>
+                    </group>
+                    <field name="text" nolabel="1" invisible="text == False"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ======================== RECHERCHE ======================== -->
+    <record id="view_x3_tariff_littoral_search" model="ir.ui.view">
+        <field name="name">x3.tariff.littoral.search</field>
+        <field name="model">x3.tariff.littoral</field>
+        <field name="arch" type="xml">
+            <search string="Recherche tarifaire">
+                <field name="default_code" string="CODE X3"/>
+                <field name="name" string="Désignation"/>
+                <field name="plicri3" string="FAMILLE STAT"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- ======================== ACTION ======================== -->
+    <record id="action_x3_tariff_littoral" model="ir.actions.act_window">
+        <field name="name">Tarifaire du Littoral</field>
+        <field name="res_model">x3.tariff.littoral</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_x3_tariff_littoral_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Aucune donnée tarifaire.
+            </p>
+            <p>
+                Les données sont synchronisées depuis la vue SQL Server ZPRIXLTT.
+            </p>
+        </field>
+    </record>
+</odoo>

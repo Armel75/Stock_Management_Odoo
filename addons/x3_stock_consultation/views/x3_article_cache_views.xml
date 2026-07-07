@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ======================== LISTE ======================== -->
+    <record id="view_x3_article_cache_tree" model="ir.ui.view">
+        <field name="name">x3.article.cache.tree</field>
+        <field name="model">x3.article.cache</field>
+        <field name="arch" type="xml">
+            <tree string="Articles / Stocks" limit="80" create="false" delete="false">
+                <field name="default_code" string="Code article"/>
+                <field name="name" string="Désignation"/>
+                <field name="site_id" string="Site"/>
+                <field name="quantity" string="Stock" sum="Total"/>
+                <field name="status" string="Statut"/>
+                <field name="sync_date" string="Dernière synchro"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ======================== FORMULAIRE ======================== -->
+    <record id="view_x3_article_cache_form" model="ir.ui.view">
+        <field name="name">x3.article.cache.form</field>
+        <field name="model">x3.article.cache</field>
+        <field name="arch" type="xml">
+            <form string="Fiche article" create="false" edit="false" delete="false">
+                <header/>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="default_code" placeholder="Code article"/>
+                        </h1>
+                        <h2>
+                            <field name="name" placeholder="Désignation"/>
+                        </h2>
+                    </div>
+                    <group>
+                        <group string="Article">
+                            <field name="default_code"/>
+                            <field name="name"/>
+                            <field name="search_key"/>
+                            <field name="text"/>
+                            <field name="status"/>
+                        </group>
+                        <group string="Stock">
+                            <field name="site_id"/>
+                            <field name="quantity"/>
+                            <field name="cumulative_quantity"/>
+                        </group>
+                        <group string="Prix (région utilisateur)">
+                            <field name="displayed_price_ht" widget="monetary"/>
+                            <field name="displayed_price_ttc" widget="monetary"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Tous les prix par région">
+                            <group string="BDA">
+                                <field name="price_ht_bda"/>
+                                <field name="price_ttc_bda"/>
+                            </group>
+                            <group string="BER">
+                                <field name="price_ht_ber"/>
+                                <field name="price_ttc_ber"/>
+                            </group>
+                            <group string="CEN">
+                                <field name="price_ht_cen"/>
+                                <field name="price_ttc_cen"/>
+                            </group>
+                            <group string="KRI">
+                                <field name="price_ht_kri"/>
+                                <field name="price_ttc_kri"/>
+                            </group>
+                            <group string="LTT">
+                                <field name="price_ht_ltt"/>
+                                <field name="price_ttc_ltt"/>
+                            </group>
+                            <group string="NGA">
+                                <field name="price_ht_nga"/>
+                                <field name="price_ttc_nga"/>
+                            </group>
+                            <group string="OU">
+                                <field name="price_ht_ou"/>
+                                <field name="price_ttc_ou"/>
+                            </group>
+                        </page>
+                    </notebook>
+                    <group string="Informations de synchronisation">
+                        <field name="sync_date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ======================== RECHERCHE ======================== -->
+    <record id="view_x3_article_cache_search" model="ir.ui.view">
+        <field name="name">x3.article.cache.search</field>
+        <field name="model">x3.article.cache</field>
+        <field name="arch" type="xml">
+            <search string="Recherche articles">
+                <field name="default_code" string="Code article"/>
+                <field name="name" string="Désignation"/>
+                <field name="site_id" string="Site"/>
+                <field name="search_key" string="Clé de recherche"/>
+                <separator/>
+                <filter name="stock_positive" string="Stock &gt; 0" domain="[('quantity', '&gt;', 0.0)]"/>
+                <filter name="stock_zero" string="Stock = 0" domain="[('quantity', '=', 0.0)]"/>
+                <separator/>
+                <group expand="0" string="Groupes">
+                    <filter name="group_site" string="Par site" context="{'group_by': 'site_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ======================== ACTION ======================== -->
+    <record id="action_x3_article_cache" model="ir.actions.act_window">
+        <field name="name">Articles / Stocks</field>
+        <field name="res_model">x3.article.cache</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_x3_article_cache_search"/>
+        <field name="context">{'x3_price_region': uid.x3_price_region}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Aucun article trouvé.
+            </p>
+            <p>
+                Les articles sont synchronisés automatiquement chaque nuit depuis SAGE X3.
+                Si aucun article n'apparaît, vérifiez la configuration de la connexion SQL Server
+                et l'historique des synchronisations.
+            </p>
+        </field>
+    </record>
+</odoo>

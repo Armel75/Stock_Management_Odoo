@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menu racine -->
+    <menuitem id="menu_x3_stock_root"
+              name="SAGE X3"
+              sequence="50"
+              groups="group_x3_stock_user,group_x3_stock_admin"/>
+
+    <!-- Sous-menu : Consultation -->
+    <menuitem id="menu_x3_stock_consultation"
+              name="Stocks"
+              parent="menu_x3_stock_root"
+              sequence="10"
+              action="action_x3_article_cache"
+              groups="group_x3_stock_user,group_x3_stock_admin"/>
+
+    <!-- Sous-menu : Tarifaire du Littoral -->
+    <menuitem id="menu_x3_tariff_littoral"
+              name="Tarifaire du Littoral"
+              parent="menu_x3_stock_root"
+              sequence="15"
+              action="action_x3_tariff_littoral"
+              groups="group_x3_stock_user,group_x3_stock_admin"/>
+
+    <!-- Sous-menu : Tarifaire de Bamenda -->
+    <menuitem id="menu_x3_tariff_bamenda"
+              name="Tarifaire de Bamenda"
+              parent="menu_x3_stock_root"
+              sequence="16"
+              action="action_x3_tariff_bamenda"
+              groups="group_x3_stock_user,group_x3_stock_admin"/>
+
+    <!-- Sous-menu : Tarifaire du Centre -->
+    <menuitem id="menu_x3_tariff_centre"
+              name="Tarifaire du Centre"
+              parent="menu_x3_stock_root"
+              sequence="17"
+              action="action_x3_tariff_centre"
+              groups="group_x3_stock_user,group_x3_stock_admin"/>
+
+    <!-- Sous-menu : Tarifaire de l'Ouest -->
+    <menuitem id="menu_x3_tariff_ouest"
+              name="Tarifaire de l'Ouest"
+              parent="menu_x3_stock_root"
+              sequence="18"
+              action="action_x3_tariff_ouest"
+              groups="group_x3_stock_user,group_x3_stock_admin"/>
+
+    <!-- Sous-menu : Tarifaire de Kribi -->
+    <menuitem id="menu_x3_tariff_kribi"
+              name="Tarifaire de Kribi"
+              parent="menu_x3_stock_root"
+              sequence="19"
+              action="action_x3_tariff_kribi"
+              groups="group_x3_stock_user,group_x3_stock_admin"/>
+
+    <!-- Sous-menu : Tarifaire de Bertoua -->
+    <menuitem id="menu_x3_tariff_bertoua"
+              name="Tarifaire de Bertoua"
+              parent="menu_x3_stock_root"
+              sequence="21"
+              action="action_x3_tariff_bertoua"
+              groups="group_x3_stock_user,group_x3_stock_admin"/>
+
+    <!-- Sous-menu : Tarifaire de Ngaoundéré -->
+    <menuitem id="menu_x3_tariff_ngaoundere"
+              name="Tarifaire de Ngaoundéré"
+              parent="menu_x3_stock_root"
+              sequence="22"
+              action="action_x3_tariff_ngaoundere"
+              groups="group_x3_stock_user,group_x3_stock_admin"/>
+
+    <!-- Sous-menu : Administration -->
+    <menuitem id="menu_x3_stock_admin"
+              name="Administration"
+              parent="menu_x3_stock_root"
+              sequence="99"
+              groups="group_x3_stock_admin"/>
+
+    <menuitem id="menu_x3_sync_configuration"
+              name="Configuration"
+              parent="menu_x3_stock_admin"
+              sequence="10"
+              action="action_x3_sync_configuration"
+              groups="group_x3_stock_admin"/>
+
+    <menuitem id="menu_x3_sync_history"
+              name="Historique syncs"
+              parent="menu_x3_stock_admin"
+              sequence="20"
+              action="action_x3_sync_history"
+              groups="group_x3_stock_admin"/>
+
+    <menuitem id="menu_x3_sync_launch"
+              name="Synchroniser maintenant"
+              parent="menu_x3_stock_admin"
+              sequence="15"
+              action="action_x3_manual_sync"
+              groups="group_x3_stock_admin"/>
+</odoo>

@@ -1,0 +1,24 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_x3_article_cache_user,x3.article.cache user,model_x3_article_cache,group_x3_stock_user,1,0,0,0
+access_x3_article_cache_admin,x3.article.cache admin,model_x3_article_cache,group_x3_stock_admin,1,1,1,1
+access_x3_sync_history_user,x3.sync.history user,model_x3_sync_history,group_x3_stock_user,1,0,0,0
+access_x3_sync_history_admin,x3.sync.history admin,model_x3_sync_history,group_x3_stock_admin,1,1,1,1
+access_x3_sync_configuration_admin,x3.sync.configuration admin,model_x3_sync_configuration,group_x3_stock_admin,1,1,1,1
+access_x3_consultation_history_user,x3.consultation.history user,model_x3_consultation_history,group_x3_stock_user,1,0,0,0
+access_x3_consultation_history_admin,x3.consultation.history admin,model_x3_consultation_history,group_x3_stock_admin,1,0,0,0
+access_x3_sync_service_admin,x3.sync.service admin,model_x3_sync_service,group_x3_stock_admin,1,1,1,1
+access_x3_manual_sync_wizard_admin,x3.manual.sync.wizard admin,model_x3_manual_sync_wizard,group_x3_stock_admin,1,1,1,1
+access_x3_tariff_littoral_user,x3.tariff.littoral user,model_x3_tariff_littoral,group_x3_stock_user,1,0,0,0
+access_x3_tariff_littoral_admin,x3.tariff.littoral admin,model_x3_tariff_littoral,group_x3_stock_admin,1,1,1,1
+access_x3_tariff_bamenda_user,x3.tariff.bamenda user,model_x3_tariff_bamenda,group_x3_stock_user,1,0,0,0
+access_x3_tariff_bamenda_admin,x3.tariff.bamenda admin,model_x3_tariff_bamenda,group_x3_stock_admin,1,1,1,1
+access_x3_tariff_centre_user,x3.tariff.centre user,model_x3_tariff_centre,group_x3_stock_user,1,0,0,0
+access_x3_tariff_centre_admin,x3.tariff.centre admin,model_x3_tariff_centre,group_x3_stock_admin,1,1,1,1
+access_x3_tariff_ouest_user,x3.tariff.ouest user,model_x3_tariff_ouest,group_x3_stock_user,1,0,0,0
+access_x3_tariff_ouest_admin,x3.tariff.ouest admin,model_x3_tariff_ouest,group_x3_stock_admin,1,1,1,1
+access_x3_tariff_kribi_user,x3.tariff.kribi user,model_x3_tariff_kribi,group_x3_stock_user,1,0,0,0
+access_x3_tariff_kribi_admin,x3.tariff.kribi admin,model_x3_tariff_kribi,group_x3_stock_admin,1,1,1,1
+access_x3_tariff_bertoua_user,x3.tariff.bertoua user,model_x3_tariff_bertoua,group_x3_stock_user,1,0,0,0
+access_x3_tariff_bertoua_admin,x3.tariff.bertoua admin,model_x3_tariff_bertoua,group_x3_stock_admin,1,1,1,1
+access_x3_tariff_ngaoundere_user,x3.tariff.ngaoundere user,model_x3_tariff_ngaoundere,group_x3_stock_user,1,0,0,0
+access_x3_tariff_ngaoundere_admin,x3.tariff.ngaoundere admin,model_x3_tariff_ngaoundere,group_x3_stock_admin,1,1,1,1
